@@ -1,3 +1,6 @@
 require "modules.classic"
 require "src.controllers.inputs"
+require "src.motors.prints"
+require "src.prefabs.prefab"
+require "src.prefabs.crosshair"
 require "src.utils.math"
