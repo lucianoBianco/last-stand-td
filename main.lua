@@ -12,9 +12,8 @@ function love.update( dt )
 end
 
 function love.draw()
+    for i = 1, #bullets do
+        bullets[i]:draw()
+    end
     Crosshair:draw()
-end
-
-function love.mousepressed( x, y, button, istouch, presses )
-    Crosshair:fire()
 end

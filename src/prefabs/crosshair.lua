@@ -6,12 +6,13 @@ local prDist = 10
 local function renderPrecisionLine( self )
     love.graphics.setLineWidth( prWidth )
     local dist = self.currPrecision * prDist
-    love.graphics.setColor( 1, 0, 0, 0.05 * dist )
+    love.graphics.setColor( 1, 0, 0, 0.03 * dist )
     love.graphics.line( self.x + dist, self.y - prLength, self.x + dist, self.y + prLength )
     love.graphics.line( self.x - dist, self.y - prLength, self.x - dist, self.y + prLength )
     love.graphics.line( self.x - prLength, self.y - dist, self.x + prLength, self.y - dist )
     love.graphics.line( self.x - prLength, self.y + dist, self.x + prLength, self.y + dist )
 end
+
 local function renderAimLine( self )
     love.graphics.setLineWidth( prWidth * 3 )
     love.graphics.setColor( 1, 0, 0, 0.5 )
