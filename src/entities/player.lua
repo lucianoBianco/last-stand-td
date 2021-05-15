@@ -7,6 +7,7 @@ function Player:new()
     self.x = screen_width / 2
     self.y = screen_height - 50
     self.r = 0
+    self.score = 0
     self.sprite = love.graphics.newImage("assets/sprites/player.png")
     self.muzzles = {}
     for i = 1, 3, 1 do
@@ -38,4 +39,8 @@ end
 function Player:fire()
     self.muzzleOpacity = 1
     self.currentMuzzle = math.random(3)
+end
+
+function Player:setScore(mod)
+    self.score = self.score + mod
 end
