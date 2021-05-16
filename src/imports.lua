@@ -1,5 +1,6 @@
 require "modules.classic"
 require "src.controllers.inputs"
+require "src.controllers.sceneManager"
 require "src.motors.enemyManager"
 require "src.motors.prints"
 require "src.prefabs.prefab"
