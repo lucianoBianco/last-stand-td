@@ -1,4 +1,5 @@
 require "modules.classic"
+require "src.scenes.base"
 require "src.controllers.inputs"
 require "src.controllers.sceneManager"
 require "src.motors.enemyManager"

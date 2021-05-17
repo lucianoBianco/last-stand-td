@@ -3,17 +3,19 @@ sceneManager = {}
 function sceneManager:load()
     self.currentScene = 1
     self.sceneToLoad = nil
+    base:loading()
 end
 
-function sceneManager:init()
-    self.sceneToLoad = require ("src.scenes.scene"..self.currentScene)
-    self.sceneToLoad:load()
+function sceneManager:init(scene)
+    self.sceneToLoad = require (scene)
+    local loadState = self.sceneToLoad:load()
+    base.outsideLoaded = loadState
 end
 
-function sceneManager:next()
-    -- self.currentScene = self.currentScene + 1
+function sceneManager:openScene(scene)
+    base:loading()
     self.clear()
-    self:init()
+    self:init(scene)
 end
 
 function sceneManager.clear()
@@ -21,9 +23,21 @@ function sceneManager.clear()
 end
 
 function sceneManager:update(dt)
-    self.sceneToLoad.update(dt)
+    if not base.globalLoaded then return end
+    self.sceneToLoad:update(dt, base.mouseX, base.mouseY)
 end
 
 function sceneManager:draw()
-    self.sceneToLoad.draw()
+    if not base.globalLoaded then return end
+    self.sceneToLoad:draw()
+end
+
+function sceneManager:keypressed(key)
+    if not base.globalLoaded then return end
+    self.sceneToLoad:keypressed(key)
+end
+
+function sceneManager:mousepressed(x, y, button, istouch, presses)
+    if not base.globalLoaded then return end
+    self.sceneToLoad:mousepressed(x, y, button, istouch, presses)
 end

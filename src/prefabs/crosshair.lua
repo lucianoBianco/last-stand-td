@@ -28,11 +28,12 @@ function Crosshair:new()
     self.recovery = 3
     self.precision = 6
     self.currPrecision = 0
+    return true
 end
 
-function Crosshair:update( x, y, dt )
-    self.x = x
-    self.y = y
+function Crosshair:update( dt, mouseX, mouseY )
+    self.x = mouseX
+    self.y = mouseY
     if (self.currPrecision > 0) then
         self.currPrecision = self.currPrecision - self.recovery * dt
     end

@@ -20,6 +20,7 @@ function Player:new()
     self.dOrigin = {x = self.width/ 2, y = self.height - 30}
     self.tempOrigin = {x = self.width/ 2, y = 0}
     self.sOrigin = {x = 6, y = self.height - 1}
+    return true
 end
 
 function Player:update(dt)

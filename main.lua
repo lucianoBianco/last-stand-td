@@ -2,19 +2,17 @@ require "src.imports"
 
 function love.load()
     math.randomseed(os.time())
-    Player:new()
+    base:load()
     sceneManager:load()
-    sceneManager:init()
+    sceneManager:init("src.scenes.mainMenu")
 end
 
 function love.update( dt )
+    base:update(dt)
     sceneManager:update(dt)
-    Player:update( dt )
 end
 
 function love.draw()
-    love.graphics.setColor(1,1,1)
-    love.graphics.print('Placar: '.. Player.score)
-    Player:draw()
     sceneManager:draw()
+    base:draw()
 end
