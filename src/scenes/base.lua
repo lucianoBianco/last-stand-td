@@ -33,7 +33,9 @@ function base:loading()
     self.outsideLoaded = false
     self.internalLoaded = false
 
-    tick.delay(function () self.internalLoaded = true end , 2)
+    tick.delay(function ()
+        self.internalLoaded = true
+    end , 2)
 end
 
 function base:update(dt)

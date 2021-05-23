@@ -2,7 +2,7 @@ local Object = require "modules.classic"
 local enemy = Object:extend()
 
 function enemy:new(x, y, w, h)
-    self.x = x or math.random(0, 700)
+    self.x = x or math.random(0, 14) * 50
     self.y = y or -100
     self.w = w or 100
     self.h = h or 200

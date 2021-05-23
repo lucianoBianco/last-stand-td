@@ -4,7 +4,7 @@ local scene = {}
 local loaded1, loaded2 = false, false
 
 function scene:load()
-    local enemyStatus = {mult = 1, cap = 3, pool = 10}
+    local enemyStatus = {mult = 1, cap = { 1, 2, nil }, pool = { 3, 6, 4 }}
     enemyManager:setStatus(enemyStatus.mult, enemyStatus.cap, enemyStatus.pool)
 
     loaded1 = Player:new()
@@ -25,14 +25,13 @@ function scene:update(dt, mouseX, mouseY)
     for i = 1, #enemies do
         enemies[i]:update(dt)
     end
-    enemyManager:update()
+    if not enemyManager:update(dt) then
+        sceneManager:openScene("src.scenes.mainMenu")
+    end
 
     Player:update( dt )
     Crosshair:update( dt, mouseX, mouseY )
 
-    if #enemies == 0 and enemyManager.pool == 0 then
-        sceneManager:openScene("src.scenes.mainMenu")
-    end
 end
 
 function scene:draw()
